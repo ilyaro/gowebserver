@@ -6,8 +6,9 @@ steps:
   args: 
     - -c
     - |
-      export MAIN_PKG="webserver.go"
       GO_ENABLED=0 GOOS=linux go build ${MAIN_PKG} && cp ${MAIN_PKG} /workspace/${MAIN_PKG} 
+  env:
+   - 'MAIN_PKG=webserver.go'
 
 ## build the image of webserver and push it in the same runtime image docker in docker to google container registry gcr.io 
 - name: 'gcr.io/cloud-builders/docker'
