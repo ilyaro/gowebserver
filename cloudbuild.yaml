@@ -2,7 +2,7 @@ steps:
 
 ## multiline script
 - name: 'gcr.io/cloud-builders/go'
-  entrypoint: 'bash'
+  entrypoint: '/bin/bash'
   args:
   - '-eEuo'
   - 'pipefail'
