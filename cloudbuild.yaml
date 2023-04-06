@@ -1,14 +1,13 @@
 steps:
 
 ## multiline script
-- name: 'gcr.io/cloud-builders/go'
-  entrypoint: '/bin/bash'
-  args:
-  - '-eEuo'
-  - 'pipefail'
-  - '-c'
-  - |- 
-    GO_ENABLED=0 GOOS=linux go build webserver.go
+- name: golang:1.20
+    entrypoint: /bin/bash
+    args: 
+      - -c
+      - |
+        GO_ENABLED=0 GOOS=linux go build webserver.go && go test -timeout 1m -v ./...
+
 
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/gowebserver/webserver', '.']
