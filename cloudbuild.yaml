@@ -6,7 +6,7 @@ steps:
   args: 
     - -c
     - |
-      GO_ENABLED=0 GOOS=linux go build webserver.go && cp webserver /workspace/ 
+      pwd; GO_ENABLED=0 GOOS=linux go build webserver.go 
 
 ## build the image of webserver and push it in the same runtime image docker in docker to google container registry gcr.io 
 - name: 'gcr.io/cloud-builders/docker'
