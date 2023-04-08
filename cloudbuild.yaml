@@ -11,5 +11,5 @@ steps:
 ## build the image of webserver and push it in the same runtime image docker in docker to google container registry gcr.io 
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/gowebserver/webserver', '.']
-images: ['gcr.io/gowebserver/webserver']
+images: ['gcr.io/gowebserver-1/webserver']
 
