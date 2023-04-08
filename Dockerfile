@@ -4,7 +4,7 @@ MAINTAINER ilyaro
 WORKDIR /app
 
 ## /workspace is default persistent volume in google cloud build: https://cloud.google.com/build/docs/api/reference/rest/v1/projects.builds#volume
-COPY /workspace/webserver ./
+COPY webserver ./
 
 EXPOSE 8090
 
