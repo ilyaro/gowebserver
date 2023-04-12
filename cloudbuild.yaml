@@ -27,7 +27,7 @@ images: ['gcr.io/gowebserver-1/webserver']
 #  - --location=location
 #  - --cluster=cluster
 
-- name: gcr.io/cloud-builders/kubectl
+- name: 'gcr.io/cloud-builders/kubectl'
   id: Configure kubectl
   args:
     - cluster-info
@@ -36,7 +36,7 @@ images: ['gcr.io/gowebserver-1/webserver']
     - CLOUDSDK_CONTAINER_CLUSTER=$_CUSTOM_CLUSTER
     - KUBECONFIG=/workspace/.kube/config
 
-- name: gcr.io/gowebserver-1/helm
+- name: 'gcr.io/gowebserver-1/helm'
   id: Deploy chart
   args:
     - upgrade
