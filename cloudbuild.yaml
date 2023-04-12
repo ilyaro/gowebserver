@@ -31,9 +31,9 @@ images: ['gcr.io/gowebserver-1/webserver']
     - upgrade
     - -i
     - 
-    - ./gowebserverchart
+    - ./webserverchart
     - -f
-    - ./gowebserverchart/values.yaml
+    - ./webserverchart/values.yaml
   env:
     - KUBECONFIG=/workspace/.kube/config
       - TILLERLESS=true
