@@ -18,15 +18,7 @@ steps:
   args: ['build', '-t', 'gcr.io/gowebserver-1/webserver', '.']
 images: ['gcr.io/gowebserver-1/webserver']
 
-## deploy withj gke-deploy image
-#- name: "gcr.io/cloud-builders/gke-deploy"
-#  args:
-#  - run
-#  - --filename=./webserverchart
-#  - --image=gcr.io/project-id/image:tag
-#  - --location=location
-#  - --cluster=cluster
-
+## Prepare kubeconfig
 - name: 'gcr.io/cloud-builders/kubectl'
   id: Configure kubectl
   args:
@@ -36,6 +28,7 @@ images: ['gcr.io/gowebserver-1/webserver']
     - CLOUDSDK_CONTAINER_CLUSTER=$_CUSTOM_CLUSTER
     - KUBECONFIG=/workspace/.kube/config
 
+## deploy with helm
 - name: 'gcr.io/gowebserver-1/helm'
   id: Deploy chart
   args:
