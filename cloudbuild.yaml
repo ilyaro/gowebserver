@@ -1,3 +1,6 @@
+timeout: 1200s
+i#substitutions:
+
 steps:
 
 ## multiline script
@@ -13,3 +16,24 @@ steps:
   args: ['build', '-t', 'gcr.io/gowebserver-1/webserver', '.']
 images: ['gcr.io/gowebserver-1/webserver']
 
+## deploy withj gke-deploy image
+#- name: "gcr.io/cloud-builders/gke-deploy"
+#  args:
+#  - run
+#  - --filename=./webserverchart
+#  - --image=gcr.io/project-id/image:tag
+#  - --location=location
+#  - --cluster=cluster
+
+- name: gcr.io/gowebserver-1/helm
+  id: Deploy chart
+  args:
+    - upgrade
+    - -i
+    - 
+    - ./gowebserverchart
+    - -f
+    - ./gowebserverchart/values.yaml
+  env:
+    - KUBECONFIG=/workspace/.kube/config
+      - TILLERLESS=true
