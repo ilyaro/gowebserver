@@ -47,7 +47,7 @@ ingress:
      kubernetes.io/tls-acme: "true"
   hosts:
     - host: localhost
-      paths:  
+      paths:
         - path: /
         pathType: ImplementationSpecific
         - path: /headers/
