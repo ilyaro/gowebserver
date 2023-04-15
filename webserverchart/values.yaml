@@ -45,11 +45,13 @@ ingress:
   className: nginx
   annotations: 
      kubernetes.io/tls-acme: "true"
-  paths:
-    - path: /
-      pathType: ImplementationSpecific
-    - path: /headers/
-      pathType: ImplementationSpecific
+  hosts:
+    - host: localhost
+      paths:  
+        - path: /
+        pathType: ImplementationSpecific
+        - path: /headers/
+        pathType: ImplementationSpecific
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
